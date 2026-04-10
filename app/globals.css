@@ -1,10 +1,73 @@
 @import "tailwindcss";
-@config "../tailwind.config.js";
+
+@theme {
+  --color-on-surface: #26362d;
+  --color-on-secondary: #e6ffef;
+  --color-on-secondary-fixed-variant: #006b4b;
+  --color-secondary-dim: #005f43;
+  --color-on-tertiary-fixed-variant: #75221f;
+  --color-surface-tint: #006d50;
+  --color-surface-container-low: #ebf7ed;
+  --color-error: #ac3434;
+  --color-background: #f3fcf3;
+  --color-on-surface-variant: #526358;
+  --color-secondary-fixed: #9bf8cd;
+  --color-outline-variant: #a5b6aa;
+  --color-on-primary: #e5fff1;
+  --color-primary: #006d50;
+  --color-surface-dim: #cbdfd0;
+  --color-primary-fixed: #94f5cd;
+  --color-surface-container-lowest: #ffffff;
+  --color-on-tertiary-container: #691a17;
+  --color-inverse-primary: #9cfed5;
+  --color-on-error: #fff7f6;
+  --color-on-secondary-fixed: #004b34;
+  --color-surface-variant: #d5e7da;
+  --color-surface: #f3fcf3;
+  --color-secondary-container: #9bf8cd;
+  --color-tertiary-fixed-dim: #fd8a80;
+  --color-on-error-container: #65000b;
+  --color-tertiary-dim: #8f3630;
+  --color-surface-bright: #f3fcf3;
+  --color-surface-container-high: #dcece0;
+  --color-inverse-surface: #08100b;
+  --color-on-background: #26362d;
+  --color-secondary-fixed-dim: #8de9c0;
+  --color-on-primary-container: #005e44;
+  --color-surface-container: #e4f1e6;
+  --color-inverse-on-surface: #969f98;
+  --color-tertiary: #9e413b;
+  --color-on-primary-fixed-variant: #00694c;
+  --color-primary-fixed-dim: #86e7bf;
+  --color-tertiary-fixed: #ff9f96;
+  --color-error-container: #f56965;
+  --color-error-dim: #70030f;
+  --color-secondary: #006d4d;
+  --color-on-primary-fixed: #004934;
+  --color-surface-container-highest: #d5e7da;
+  --color-primary-container: #94f5cd;
+  --color-tertiary-container: #ff9f96;
+  --color-outline: #6e7f73;
+  --color-primary-dim: #005f45;
+  --color-on-tertiary-fixed: #490205;
+  --color-on-tertiary: #fff7f6;
+  --color-on-secondary-container: #006043;
+
+  --font-headline: Georgia, "Times New Roman", serif;
+  --font-body: Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-label: Inter, ui-sans-serif, system-ui, sans-serif;
+}
 
 /* Your custom CSS like .glass-nav should be down here */
 
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  vertical-align: middle;
+  white-space: nowrap;
 }
 .sunbeam-glow {
   box-shadow: 0 0 20px rgba(255, 209, 102, 0.4);

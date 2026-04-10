@@ -8,9 +8,9 @@ const links = [
   { label: "Settings", icon: "settings" },
 ];
 
-export default function AppSidebar() {
+export default function AppSidebar({ user, completedToday = 0, totalHabits = 0 }) {
   return (
-    <aside className="bg-emerald-50 h-screen w-72 fixed left-0 top-0 z-40 shadow-[40px_0_40px_-4px_rgba(38,54,45,0.04)] flex flex-col p-6 space-y-8">
+    <aside className="fixed left-0 top-0 z-40 hidden h-screen w-72 flex-col space-y-8 bg-emerald-50 p-6 shadow-[40px_0_40px_-4px_rgba(38,54,45,0.04)] lg:flex">
       <Logo />
 
       <div className="space-y-2">
@@ -22,9 +22,11 @@ export default function AppSidebar() {
           />
           <div>
             <p className="font-headline text-sm font-semibold tracking-tight text-emerald-900">
-              Good morning, Gardener
+              Good morning, {user.name}
             </p>
-            <p className="text-xs text-emerald-800/60">Your sanctuary awaits</p>
+            <p className="text-xs text-emerald-800/60">
+              {completedToday} of {totalHabits} habits bloomed today
+            </p>
           </div>
         </div>
 
@@ -39,7 +41,7 @@ export default function AppSidebar() {
                   : "text-emerald-800/60 hover:bg-emerald-100/50"
               }`}
             >
-              <span className="material-symbols-outlined mr-3">{link.icon}</span>
+              <span className="material-symbols-outlined mr-3 leading-none">{link.icon}</span>
               {link.label}
             </a>
           ))}
@@ -47,8 +49,8 @@ export default function AppSidebar() {
       </div>
 
       <div className="mt-auto">
-        <Button variant="primary" className="w-full py-4">
-          Grow New Habit
+        <Button variant="primary" className="w-full py-4" disabled>
+          Create Habit Soon
         </Button>
       </div>
     </aside>

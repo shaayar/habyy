@@ -1,24 +1,41 @@
 import Button from "@/components/ui/Button";
 
-export default function DashboardHeader() {
+export default function DashboardHeader({
+  name,
+  focusItems = [],
+  completedToday = 0,
+  totalHabits = 0,
+}) {
+  const subtitle =
+    focusItems.length === 0
+      ? "Your garden is calm today. Everything is already blooming."
+      : focusItems.length === 1
+        ? `Welcome back, ${name}. Today we're focusing on ${focusItems[0]}.`
+        : `Welcome back, ${name}. Today we're focusing on ${focusItems[0]} and ${focusItems[1]}.`;
+
   return (
-    <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-      <div className="max-w-2xl">
-        <h1 className="text-5xl font-headline font-black text-on-surface tracking-tight leading-tight mb-4">
+    <div className="mb-10 flex flex-col gap-6 lg:mb-12 lg:flex-row lg:items-end lg:justify-between">
+      <div className="max-w-3xl">
+        <h1 className="mb-4 text-4xl font-headline font-black leading-tight tracking-tight text-on-surface sm:text-5xl">
           Today&apos;s Garden
         </h1>
-        <p className="text-xl text-on-surface-variant/80 font-medium">
-          Welcome back. Today, we&apos;re focusing on{" "}
-          <span className="text-primary font-bold">Mindful Movement</span> and{" "}
-          <span className="text-primary font-bold">Nurturing Growth</span>.
+        <p className="max-w-2xl text-lg font-medium text-on-surface-variant/80 sm:text-xl">
+          {subtitle}
         </p>
       </div>
 
-      <Button variant="primary" className="px-8 py-5 shadow-[0_20px_40px_-8px_rgba(0,109,80,0.3)]">
-        <span className="material-symbols-outlined text-2xl mr-2" style={{ fontVariationSettings: "'FILL' 1" }}>
+      <Button
+        variant="primary"
+        disabled
+        className="w-full justify-center px-6 py-4 shadow-[0_20px_40px_-8px_rgba(0,109,80,0.3)] sm:w-auto sm:px-8 sm:py-5"
+      >
+        <span
+          className="material-symbols-outlined mr-2 text-2xl leading-none"
+          style={{ fontVariationSettings: "'FILL' 1" }}
+        >
           add_circle
         </span>
-        Plant New Habit
+        {completedToday}/{totalHabits} Bloomed Today
       </Button>
     </div>
   );

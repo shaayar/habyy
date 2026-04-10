@@ -11,15 +11,17 @@ export default function HabitCard({
   description,
   completed = false,
   badgeVariant = "yellow",
+  onCheckIn,
+  isSubmitting = false,
 }) {
   return (
     <div
-      className={`bg-surface-container-lowest rounded-xl p-8 shadow-[0_10px_30px_-5px_rgba(38,54,45,0.04)] hover:shadow-[0_20px_40px_-10px_rgba(38,54,45,0.08)] transition-all flex flex-col relative overflow-hidden group ${
+      className={`relative flex h-full flex-col overflow-hidden rounded-xl bg-surface-container-lowest p-6 shadow-[0_10px_30px_-5px_rgba(38,54,45,0.04)] transition-all hover:shadow-[0_20px_40px_-10px_rgba(38,54,45,0.08)] sm:p-8 ${
         completed ? "border-2 border-primary/20" : ""
       }`}
     >
-      <div className="flex justify-between items-start mb-6">
-        <div>
+      <div className="mb-6 flex items-start justify-between gap-4">
+        <div className="min-w-0">
           <span className="text-xs font-bold text-primary tracking-widest uppercase mb-1 block">
             {category}
           </span>
@@ -29,21 +31,31 @@ export default function HabitCard({
         <Badge variant={badgeVariant}>{streak} DAY STREAK</Badge>
       </div>
 
-      <div className="flex items-center space-x-6 mb-8">
+      <div className="mb-8 flex items-center gap-4 sm:gap-6">
         <ProgressRing progress={progress} icon={icon} />
-        <p className="text-on-surface-variant font-medium text-sm">{description}</p>
+        <p className="flex-1 text-sm font-medium leading-6 text-on-surface-variant">
+          {description}
+        </p>
       </div>
 
       {completed ? (
-        <div className="w-full py-4 rounded-full bg-surface-container-low text-primary font-black text-lg flex items-center justify-center space-x-2">
+        <div className="mt-auto flex w-full items-center justify-center rounded-full bg-surface-container-low py-4 text-lg font-black text-primary">
           <span>Completed Today</span>
         </div>
       ) : (
-        <Button variant="success" className="w-full py-4 text-lg font-black">
-          <span className="material-symbols-outlined mr-2" style={{ fontVariationSettings: "'FILL' 1" }}>
+        <Button
+          variant="success"
+          className="mt-auto w-full py-4 text-lg font-black"
+          onClick={onCheckIn}
+          disabled={isSubmitting}
+        >
+          <span
+            className="material-symbols-outlined mr-2 leading-none"
+            style={{ fontVariationSettings: "'FILL' 1" }}
+          >
             check_circle
           </span>
-          Check
+          {isSubmitting ? "Updating..." : "Check"}
         </Button>
       )}
     </div>

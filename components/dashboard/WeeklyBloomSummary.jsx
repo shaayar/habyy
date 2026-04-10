@@ -1,4 +1,4 @@
-export default function WeeklyBloomCard({ weeklyBloom }) {
+export default function WeeklyBloomSummary({ weeklyBloom }) {
   return (
     <div className="rounded-xl bg-surface-container p-8">
       <h4 className="mb-6 flex items-center font-headline font-bold text-on-surface">
@@ -6,12 +6,14 @@ export default function WeeklyBloomCard({ weeklyBloom }) {
         Weekly Bloom
       </h4>
 
-      <div className="grid grid-cols-7 gap-3 mb-8">
+      <div className="mb-8 grid grid-cols-7 gap-3">
         {weeklyBloom.days.map((day) => (
           <div key={day.dateKey} className="flex flex-col items-center space-y-2">
-            <span className="text-[10px] font-black text-on-surface-variant">{day.label}</span>
+            <span className="text-[10px] font-black text-on-surface-variant">
+              {day.label}
+            </span>
             <div
-              className={`w-8 h-8 rounded-full flex items-center justify-center ${
+              className={`flex h-8 w-8 items-center justify-center rounded-full ${
                 day.isActive ? "bg-primary" : "bg-surface-container-highest"
               }`}
             >
@@ -29,7 +31,9 @@ export default function WeeklyBloomCard({ weeklyBloom }) {
       </div>
 
       <p className="text-sm text-on-surface-variant">
-        Your habits are blooming steadily this week 🌱
+        {weeklyBloom.currentWeekTotal} blooms this week, with a{" "}
+        {weeklyBloom.changeFromLastWeek >= 0 ? "+" : ""}
+        {weeklyBloom.changeFromLastWeek}% shift from last week.
       </p>
     </div>
   );

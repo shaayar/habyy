@@ -4,8 +4,8 @@ export default function ProgressRing({ progress = 0, icon = "eco", color = "text
   const dashOffset = circumference - (progress / 100) * circumference;
 
   return (
-    <div className="relative w-20 h-20 flex items-center justify-center">
-      <svg className="w-full h-full transform -rotate-90">
+    <div className="relative flex h-20 w-20 shrink-0 items-center justify-center">
+      <svg className="h-full w-full -rotate-90 transform" viewBox="0 0 80 80" aria-hidden="true">
         <circle
           className="text-surface-container-highest"
           cx="40"
@@ -28,7 +28,7 @@ export default function ProgressRing({ progress = 0, icon = "eco", color = "text
         />
       </svg>
 
-      <span className={`material-symbols-outlined absolute text-3xl ${color}`}>
+      <span className={`material-symbols-outlined absolute text-3xl leading-none ${color}`}>
         {icon}
       </span>
     </div>
